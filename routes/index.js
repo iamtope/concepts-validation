@@ -14,7 +14,6 @@ router.get("/:urlId", async (req, res) => {
         },
         { $inc: { clicks: 1 } }
       );
-      console.log(url.origUrl);
       await open(url.origUrl);
     } else res.status(404).json("Not found");
   } catch (err) {
