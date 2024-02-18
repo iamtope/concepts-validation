@@ -15,8 +15,14 @@ router.get("/:urlId", async (req, res) => {
         },
         { $inc: { clicks: 1 } }
       );
-      // await open(url.origUrl);
-      spawn("open", [url.origUrl]);
+      // res.send(`<a href="googlechrome://${url.origUrl}">Try it on Chrome</a>`);
+      // await openApp(url.origUrl);
+      // spawn("open", [url.origUrl]);
+      spawn("open"[url.origUrl], {
+        env: {
+          NODE_ENV: "production",
+        },
+      });
     } else res.status(404).json("Not found");
   } catch (err) {
     console.log(err);
